@@ -3,7 +3,7 @@ from Crypto.Util.Padding import pad
 from Crypto.Random import get_random_bytes
 from enum import Enum
 import pandas as pd
-import  getpass, os, time, subprocess, time, wcwidth
+import  getpass, os, time, subprocess, time, wcwidth, sys
 
 user_key = b'user_key'
 user_iv = b'user_iv'
@@ -133,7 +133,7 @@ def userpassword_checker():
         inp_password = str(getpass.getpass("Enter password: "))
         if (count >= 2):
             print("Username and password do not match.")
-            exit(1)
+            sys.exit(0)
         count += 1
     print("Successful login.")
     time.sleep(2)
@@ -165,7 +165,7 @@ setting: Change Login Information
         elif select_inp == "exit":
             print("Password manager data saved.")
             time.sleep(2)
-            exit(1)
+            sys.exit(0)
         elif select_inp == "setting":
             edit_login_info()
 
@@ -516,7 +516,7 @@ def main():
         userpassword_checker()
         operation_selection()
     except KeyboardInterrupt:
-        exit(1)
+        sys.exit(0)
         
 if __name__ == "__main__":
     main()
